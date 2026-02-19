@@ -3,76 +3,339 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Página Web</title>
+    <title>Fotografía - Aprende y Practica</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+        html {
+            height: 100%;
+        }
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
+            background-color: #f4f4f4;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            transition: background-image 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         header {
-            background-color: #4CAF50;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
             color: white;
-            padding: 1rem;
+            padding: 2rem;
             text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
         }
         nav {
-            background-color: #333;
-            padding: 0.5rem;
+            background-color: #222;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         nav a {
             color: white;
             text-decoration: none;
-            padding: 0.5rem 1rem;
+            padding: 1rem 1.5rem;
             display: inline-block;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
         }
         nav a:hover {
-            background-color: #4CAF50;
+            background-color: #444;
+            border-bottom-color: #FF6B35;
         }
         main {
             padding: 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            flex: 1;
+        }
+        section {
+            background-color: white;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            position: relative;
+        }
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            z-index: 1;
+        }
+        section > * {
+            position: relative;
+            z-index: 2;
+        }
+        #inicio {
+            background-image: none;
+        }
+        /*#inicio::before {
+            background-color: rgba(255, 255, 255, 0.95);
+        }*/
+        #aprende-a-fotografiar {
+            background-image: none;
+        }
+        #camaras {
+            background-image: none;
+        }
+        #teoria {
+            background-image: none;
+        }
+        section h2 {
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            border-bottom: 3px solid #FF6B35;
+            padding-bottom: 0.5rem;
+            font-size: 2rem;
+        }
+        section h3 {
+            color: #FF6B35;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        section p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        .gallery-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .gallery-item {
+            background-color: #ddd;
+            border-radius: 5px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        section {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+        section.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
         footer {
-            background-color: #333;
+            background-color: #222;
             color: white;
             text-align: center;
-            padding: 1rem;
-            margin-top: 2rem;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Bienvenido a Mi Página</h1>
+        <h1>📸 El Arte de la Fotografía</h1>
+        <p>Aprende, practica y domina el arte de capturar momentos</p>
     </header>
     
     <nav>
         <a href="#inicio">Inicio</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#contacto">Contacto</a>
+        <a href="#aprende-a-fotografiar">Aprende</a>
+        <a href="#camaras">Cámaras</a>
+        <a href="#teoria">Teoría</a>
     </nav>
     
     <main>
         <section id="inicio">
-            <h2>Inicio</h2>
-            <p>Contenido principal de la página.</p>
+            <h2>Capturando momentos que cuentan historias</h2>
+            <p>La fotografía es mucho más que una imagen: es una emoción detenida en el tiempo y la combinación perfecta entre creatividad y técnica. En este espacio descubrirás cómo transformar momentos cotidianos en historias llenas de luz, significado y expresión.</p>
+            <p>Aquí encontrarás todo lo necesario para desarrollar tu mirada fotográfica, desde los conceptos básicos hasta técnicas avanzadas que te permitirán perfeccionar tu estilo y dominar tu cámara con seguridad. Ya seas principiante o tengas experiencia, este sitio está diseñado para ayudarte a crecer, practicar y evolucionar en cada etapa de tu aprendizaje.</p>
+            <p>Explora, aprende y captura el mundo desde tu propia perspectiva. El arte de la fotografía comienza aquí.</p>
         </section>
         
-        <section id="sobre">
-            <h2>Sobre</h2>
-            <p>Información sobre tu sitio.</p>
+        <section id="aprende-a-fotografiar">
+            <h2>Aprende a Fotografiar</h2>
+            <h3>Conceptos Básicos</h3>
+            <p>La fotografía se basa en el control de la luz y en la manera en que esta es capturada por el sensor de la cámara. Para lograr una imagen correctamente expuesta es fundamental comprender el triángulo de exposición, compuesto por apertura, velocidad de obturación e ISO.</p>
+            <p>La apertura (f/1.8, f/4, f/8, etc.) controla la cantidad de luz que entra al lente y también la profundidad de campo. Un número f pequeño (f/1.8) permite más entrada de luz y genera fondo desenfocado, mientras que un número f grande (f/11, f/16) reduce la entrada de luz y aumenta la nitidez en toda la escena.</p>
+            <p>La velocidad de obturación determina el tiempo que el sensor permanece expuesto a la luz. Velocidades rápidas (1/1000, 1/500) congelan el movimiento, mientras que velocidades lentas (1/30, 1/10 o más bajas) generan desenfoque por movimiento o permiten capturar más luz en escenas oscuras.</p>
+            <p>El ISO controla la sensibilidad del sensor a la luz. Un ISO bajo (100–200) produce imágenes más limpias y con menos ruido digital. Un ISO alto (1600, 3200 o más) permite fotografiar en condiciones de poca luz, pero puede generar granulado.</p>
+            <p>En cuanto a composición, la regla de los tercios consiste en dividir el encuadre en nueve partes iguales mediante dos líneas horizontales y dos verticales, colocando el sujeto en los puntos de intersección para lograr equilibrio visual. También se utilizan líneas guía, simetría, patrones, marcos naturales y profundidad para dirigir la atención del espectador.</p>
+            <p>El encuadre define qué elementos entran en la imagen y cuáles se excluyen. Una buena elección del encuadre elimina distracciones y refuerza el mensaje visual. La perspectiva cambia según el ángulo desde el cual se fotografía: picado (desde arriba), contrapicado (desde abajo) o a nivel de los ojos.</p>
+            
+            <h3>Postura y Estabilidad</h3>
+            <p>La estabilidad corporal reduce el movimiento involuntario que provoca imágenes borrosas. La postura correcta consiste en mantener los pies separados al ancho de los hombros, uno ligeramente adelante del otro para mayor equilibrio. Las rodillas deben permanecer levemente flexionadas para absorber movimiento.</p>
+            <p>La cámara se sostiene con ambas manos: una mano sujeta firmemente el cuerpo de la cámara y el dedo índice se coloca suavemente sobre el disparador; la otra mano sostiene el lente desde abajo, funcionando como soporte. Los codos deben mantenerse pegados al cuerpo para reducir vibraciones.</p>
+            <p>El control de la respiración también influye en la estabilidad. Se recomienda inhalar, exhalar suavemente y disparar en el momento de pausa natural de la respiración para minimizar el movimiento.</p>
+            <p>Cuando la velocidad de obturación es baja (por ejemplo, menor a 1/60), aumenta el riesgo de trepidación. En estos casos se recomienda utilizar trípode, monopod o apoyar la cámara sobre una superficie estable. También puede activarse el estabilizador de imagen si el lente o la cámara lo incluyen.</p>
+
+            <h3>Iluminación Natural</h3>
+            <p>La luz natural varía en intensidad, dirección y temperatura a lo largo del día. Su comprensión es esencial para crear imágenes equilibradas y expresivas.</p>
+            <p>La luz frontal ilumina directamente al sujeto desde el frente, reduciendo sombras y mostrando detalles con claridad.
+La luz lateral genera volumen y profundidad al crear sombras marcadas que resaltan texturas.
+La contraluz ocurre cuando la fuente de luz está detrás del sujeto; puede producir siluetas o efectos dramáticos si se expone correctamente.</p>
+            <p>La hora dorada, que ocurre poco después del amanecer y antes del atardecer, ofrece una luz cálida y suave que favorece retratos y paisajes. La hora azul, justo antes del amanecer o después del atardecer, proporciona tonos fríos y una atmósfera más tranquila.</p>
+            <p>En días soleados al mediodía, la luz es más dura y genera sombras intensas. Para suavizarla se pueden buscar sombras abiertas, utilizar reflectores o cambiar el ángulo del sujeto. En días nublados, las nubes actúan como difusor natural, produciendo iluminación suave y uniforme.</p>
+            <p>El balance de blancos debe ajustarse según la temperatura de color para evitar tonos demasiado cálidos o fríos. En luz natural, configuraciones como “luz día”, “nublado” o “sombra” ayudan a mantener colores realistas.</p>
+            
+        </section>
+        
+        <section id="camaras">
+            <h2>Sobre las Cámaras</h2>
+            <h3>Tipos de Cámaras</h3>
+            <p>Existen distintos tipos de cámaras diseñadas para diferentes necesidades, niveles de experiencia y estilos fotográficos.</p>
+            <p>Las cámaras DSLR (Digital Single-Lens Reflex) utilizan un sistema de espejo interno que refleja la imagen hacia un visor óptico. Cuando se presiona el disparador, el espejo se levanta y permite que la luz llegue al sensor. Son conocidas por su calidad de imagen, amplia variedad de lentes intercambiables y buen rendimiento en condiciones de poca luz. Suelen ser más grandes y robustas.</p>
+            <p>Las cámaras mirrorless (sin espejo) no incorporan el sistema de espejo interno. La imagen pasa directamente al sensor y se visualiza a través de un visor electrónico o la pantalla. Son más compactas y ligeras que las DSLR, ofrecen enfoque automático rápido y excelente calidad de imagen. Actualmente son una de las opciones más populares tanto para fotografía como para video.</p>
+            <p>Las cámaras compactas tienen lente fijo y un tamaño reducido. Son fáciles de usar, ligeras y prácticas para uso cotidiano. Aunque su sensor suele ser más pequeño que el de una DSLR o mirrorless, algunos modelos avanzados ofrecen buena calidad de imagen y controles manuales.</p>
+            <p>Los smartphones integran sensores cada vez más avanzados y sistemas de procesamiento digital que optimizan automáticamente la imagen. Aunque tienen limitaciones físicas en comparación con cámaras profesionales, permiten capturar fotografías de alta calidad en situaciones cotidianas y ofrecen gran portabilidad.</p>
+
+            <h3>Partes Principales de una Cámara</h3>
+            <p>El sensor es el componente encargado de capturar la luz y convertirla en información digital. Su tamaño influye directamente en la calidad de imagen, el rango dinámico y el rendimiento en condiciones de poca luz. Sensores más grandes generalmente producen mejores resultados.</p>
+            <p>El lente u objetivo dirige la luz hacia el sensor. Está compuesto por varios elementos de vidrio que enfocan la imagen. La calidad del lente impacta directamente en la nitidez, el contraste y la distorsión de la imagen.</p>
+            <p>El diafragma se encuentra dentro del lente y regula la cantidad de luz que entra a través de la apertura (valores f/). También controla la profundidad de campo.</p>
+            <p>El obturador controla el tiempo durante el cual el sensor permanece expuesto a la luz. Puede ser mecánico o electrónico.</p>
+            <p>En las cámaras DSLR, el espejo refleja la imagen hacia el visor óptico antes de la captura. En cámaras mirrorless este sistema no existe.</p>
+            <p>La pantalla LCD permite visualizar la escena, revisar fotografías y acceder al menú de configuración. En muchos modelos también es táctil y abatible.</p>
+            <p>Otros elementos importantes incluyen el visor, los diales de control, el procesador de imagen, la batería y la tarjeta de memoria, donde se almacenan las fotografías.</p>
+
+            <h3>Lentes y Objetivos</h3>
+            <p>Los lentes determinan el ángulo de visión y la forma en que se representa la escena.</p>
+            <p>El gran angular (por ejemplo 14mm, 24mm) captura un campo de visión amplio, ideal para paisajes, arquitectura e interiores. Puede generar cierta distorsión en los bordes.</p>
+            <p>El lente estándar (35mm o 50mm) ofrece una perspectiva similar a la visión humana, por lo que es versátil para retratos y fotografía cotidiana.</p>
+            <p>El teleobjetivo (85mm, 200mm o más) permite acercar sujetos lejanos y comprime la perspectiva. Es común en fotografía deportiva, naturaleza y retratos con fondo desenfocado.</p>
+            <p>Existen también lentes macro, diseñados para fotografiar objetos muy pequeños con gran nivel de detalle, y lentes zoom, que permiten variar la distancia focal sin cambiar de objetivo.</p>
+            <p>La distancia focal se mide en milímetros (mm) y determina el encuadre. Además, cada lente tiene una apertura máxima (por ejemplo f/1.8 o f/4), que influye en la cantidad de luz que puede captar y en el desenfoque del fondo.</p>
+        </section>
+        
+        <section id="teoria">
+            <h2>Teoría Fotográfica</h2>
+            <h3>El Triángulo de Exposición</h3>
+            <p>El triángulo de exposición está compuesto por ISO, velocidad de obturación y apertura. Estos tres elementos determinan la cantidad de luz que llega al sensor y, al mismo tiempo, afectan características creativas de la imagen.</p>
+            <p>El ISO mide la sensibilidad del sensor a la luz. Valores bajos como ISO 100 o 200 producen imágenes más limpias y con menor ruido digital, ideales para exteriores bien iluminados. Valores altos como ISO 1600, 3200 o superiores permiten fotografiar en condiciones de poca luz, pero incrementan el ruido y reducen la calidad de imagen.</p>
+            <p>La velocidad de obturación indica el tiempo que el obturador permanece abierto. Se expresa en fracciones de segundo como 1/1000, 1/500 o 1/60. Velocidades rápidas congelan el movimiento, mientras que velocidades lentas permiten capturar movimiento en forma de desenfoque, como el efecto seda en el agua o estelas de luz en fotografía nocturna.</p>
+            <p>La apertura, representada en valores f/ (f/1.8, f/4, f/11), controla el tamaño del diafragma. Aperturas grandes (números f pequeños) permiten más entrada de luz y generan menor profundidad de campo. Aperturas pequeñas (números f grandes) reducen la entrada de luz y aumentan la zona enfocada.</p>
+            <p>El equilibrio entre estos tres elementos determina si una imagen está correctamente expuesta, subexpuesta (oscura) o sobreexpuesta (demasiado brillante).</p>
+
+            <h3>Regla de los Tercios</h3>
+            <p>La regla de los tercios es un principio de composición que consiste en dividir el encuadre en nueve partes iguales mediante dos líneas horizontales y dos verticales. Los cuatro puntos donde se cruzan estas líneas son zonas estratégicas donde el ojo humano tiende a concentrarse de manera natural.</p>
+            <p>Colocar el sujeto principal en uno de estos puntos genera una imagen más equilibrada y dinámica que situarlo exactamente en el centro. También puede utilizarse para posicionar el horizonte en el tercio superior o inferior del encuadre, evitando dividir la imagen en mitades iguales.</p>
+            <p>Aunque es una regla clásica, no es obligatoria. Puede romperse intencionalmente cuando se busca simetría o un efecto visual específico.</p>
+
+            <h3>Profundidad de Campo</h3>
+            <p>La profundidad de campo es la zona de la imagen que aparece enfocada desde el primer plano hasta el fondo. Está influenciada por tres factores principales: la apertura del diafragma, la distancia al sujeto y la distancia focal del lente.</p>
+            <p>Una apertura amplia (f/1.8, f/2.8) produce poca profundidad de campo, lo que significa que el sujeto estará enfocado mientras el fondo aparece desenfocado. Este efecto es común en retratos y se conoce como bokeh.</p>
+            <p>Una apertura pequeña (f/11, f/16) genera gran profundidad de campo, manteniendo enfocados tanto el sujeto como el fondo. Es frecuente en fotografía de paisajes.</p>
+            <p>Cuanto más cerca esté el fotógrafo del sujeto, menor será la profundidad de campo. Asimismo, los lentes con mayor distancia focal (teleobjetivos) tienden a producir fondos más desenfocados que los gran angulares.</p>
+            <p>El control de la profundidad de campo permite dirigir la atención del espectador y aportar intención artística a la imagen.</p>
         </section>
     </main>
     
     <footer>
-        <p>&copy; 2024 Mi Página Web. Todos los derechos reservados.</p>
+        <p>&copy; 2024 El Arte de la Fotografía. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        // Definir funciones de fondo para cada sección
+        const backgroundConfigs = {
+            'inicio': {
+                backgroundImage: "url('Docs/Inicio.jfif')",
+                backgroundColor: '#f4f4f4'
+            },
+            'aprende-a-fotografiar': {
+                backgroundImage: "url('Docs/aprender.jpg')",
+                backgroundColor: '#f4f4f4'
+            },
+            'camaras': {
+                backgroundImage: "url('Docs/camaras.jpg')",
+                backgroundColor: '#f093fb'
+            },
+            'teoria': {
+                backgroundImage: "url('Docs/teoria.webp')",
+                backgroundColor: '#4facfe'
+            }
+        };
+
+        function updateBackground(sectionId) {
+            const config = backgroundConfigs[sectionId];
+            if (config) {
+                if (sectionId === 'inicio') {
+                    document.body.style.backgroundImage = config.backgroundImage;
+                } else {
+                    document.body.style.background = config.backgroundImage;
+                }
+            }
+        }
+
+        // Show the first section on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstSection = document.getElementById('inicio');
+            if (firstSection) {
+                firstSection.classList.add('active');
+                updateBackground('inicio');
+            }
+
+            // Add click handlers to navigation links
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Get the target section ID from href
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        // Hide all sections
+                        document.querySelectorAll('section').forEach(section => {
+                            section.classList.remove('active');
+                        });
+                        
+                        // Show the target section
+                        targetSection.classList.add('active');
+                        
+                        // Update page background
+                        updateBackground(targetId);
+                        
+                        // Scroll to top
+                        window.scrollTo(0, 0);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
